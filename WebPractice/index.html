@@ -1,24 +1,59 @@
+<!-- This declaration defines that this document is an HTML5 document -->
 <!DOCTYPE html>
+<!-- The root element of an HTML page, with the language set to English -->
 <html lang="en">
+<!-- Contains meta-information about the HTML document -->
 <head>
+    <!-- Specifies the character encoding for the HTML document -->
     <meta charset="UTF-8">
+    <!-- Sets the viewport to make the website responsive on all devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The title of the document, which appears in the browser tab -->
     <title>Hello!</title>
-    <!-- Tailwind CSS for styling -->
+    <!-- This is a comment explaining that the script below is for Tailwind CSS -->
+    <!-- This script tag includes the Tailwind CSS library from a CDN, which allows for rapid UI development -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Preconnects to the Google Fonts server to speed up font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Preconnects to the Google Fonts static content server -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Links to the 'Inter' font from Google Fonts with different weights -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- The style tag is used to define internal CSS -->
     <style>
+        /* This rule applies to the body element */
         body {
+            /* Sets the font for the entire page to 'Inter', with a fallback to a generic sans-serif font */
             font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
+<!-- The body tag contains the visible content of the HTML document -->
+<!-- The classes applied to the body are from Tailwind CSS:
+     - bg-gray-900: sets a dark gray background color
+     - text-white: sets the text color to white
+     - flex: enables flexbox layout
+     - items-center: centers content vertically
+     - justify-center: centers content horizontally
+     - h-screen: sets the height of the body to the full screen height -->
 <body class="bg-gray-900 text-white flex items-center justify-center h-screen">
-    <!-- Main container for the content -->
+    <!-- This is a comment explaining the purpose of the div below -->
+    <!-- A container for the main content with Tailwind CSS classes:
+         - text-center: centers the text inside the div
+         - bg-gray-800: sets a slightly lighter dark gray background
+         - p-12: adds padding of 48px (12 * 4px) on all sides
+         - rounded-xl: applies a large border radius
+         - shadow-2xl: adds a large box shadow for a lifting effect -->
     <div class="text-center bg-gray-800 p-12 rounded-xl shadow-2xl">
+        <!-- The main heading of the page with Tailwind CSS classes:
+             - text-5xl: sets a large font size
+             - font-bold: makes the text bold
+             - text-cyan-400: sets the text color to a bright cyan -->
         <h1 class="text-5xl font-bold text-cyan-400">Hello User</h1>
+        <!-- A paragraph element with Tailwind CSS classes:
+             - mt-4: adds a margin on top of 16px (4 * 4px)
+             - text-lg: sets a large font size
+             - text-gray-300: sets the text color to a light gray -->
         <p class="mt-4 text-lg text-gray-300">Welcome to your first public web page!</p>
     </div>
 </body>
