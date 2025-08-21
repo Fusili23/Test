@@ -1,60 +1,139 @@
-<!-- This declaration defines that this document is an HTML5 document -->
 <!DOCTYPE html>
-<!-- The root element of an HTML page, with the language set to English -->
 <html lang="en">
-<!-- Contains meta-information about the HTML document -->
 <head>
-    <!-- Specifies the character encoding for the HTML document -->
     <meta charset="UTF-8">
-    <!-- Sets the viewport to make the website responsive on all devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- The title of the document, which appears in the browser tab -->
-    <title>Hello!</title>
-    <!-- This is a comment explaining that the script below is for Tailwind CSS -->
-    <!-- This script tag includes the Tailwind CSS library from a CDN, which allows for rapid UI development -->
+    <title>Review Analyzer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Preconnects to the Google Fonts server to speed up font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <!-- Preconnects to the Google Fonts static content server -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Links to the 'Inter' font from Google Fonts with different weights -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- The style tag is used to define internal CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        /* This rule applies to the body element */
         body {
-            /* Sets the font for the entire page to 'Inter', with a fallback to a generic sans-serif font */
             font-family: 'Inter', sans-serif;
+        }
+        .gaming-font {
+            font-family: 'Press Start 2P', cursive;
         }
     </style>
 </head>
-<!-- The body tag contains the visible content of the HTML document -->
-<!-- The classes applied to the body are from Tailwind CSS:
-     - bg-gray-900: sets a dark gray background color
-     - text-white: sets the text color to white
-     - flex: enables flexbox layout
-     - items-center: centers content vertically
-     - justify-center: centers content horizontally
-     - h-screen: sets the height of the body to the full screen height -->
-<body class="bg-gray-900 text-white flex items-center justify-center h-screen">
-    <!-- This is a comment explaining the purpose of the div below -->
-    <!-- A container for the main content with Tailwind CSS classes:
-         - text-center: centers the text inside the div
-         - bg-gray-800: sets a slightly lighter dark gray background
-         - p-12: adds padding of 48px (12 * 4px) on all sides
-         - rounded-xl: applies a large border radius
-         - shadow-2xl: adds a large box shadow for a lifting effect -->
-    <div class="text-center bg-gray-800 p-12 rounded-xl shadow-2xl">
-        <!-- The main heading of the page with Tailwind CSS classes:
-             - text-5xl: sets a large font size
-             - font-bold: makes the text bold
-             - text-cyan-400: sets the text color to a bright cyan -->
-        <h1 class="text-5xl font-bold text-cyan-400">Hello User</h1>
-        <!-- A paragraph element with Tailwind CSS classes:
-             - mt-4: adds a margin on top of 16px (4 * 4px)
-             - text-lg: sets a large font size
-             - text-gray-300: sets the text color to a light gray -->
-        <p class="mt-4 text-lg text-gray-300">Welcome to your first public web page!</p>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen">
+    <div class="w-full max-w-4xl mx-auto p-8">
+        <h1 class="text-4xl font-bold text-center text-cyan-400 mb-8">Review Authenticity Analyzer</h1>
+        
+        <!-- Image Upload Section -->
+        <div class="bg-gray-800 p-8 rounded-xl shadow-2xl mb-8">
+            <h2 class="text-2xl font-semibold text-cyan-300 mb-4">1. Upload Your Image</h2>
+            <div class="flex items-center justify-center w-full">
+                <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-600 border-dashed rounded-lg cursor-pointer bg-gray-700 hover:bg-gray-600">
+                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <svg class="w-10 h-10 mb-4 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                        </svg>
+                        <p class="mb-2 text-sm text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                        <p class="text-xs text-gray-400">PNG, JPG, GIF up to 10MB</p>
+                    </div>
+                    <input id="dropzone-file" type="file" class="hidden" />
+                </label>
+            </div> 
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="bg-gray-800 p-8 rounded-xl shadow-2xl mb-8">
+            <h2 class="text-2xl font-semibold text-cyan-300 mb-4">2. Add Reviews</h2>
+            <textarea id="reviews-input" class="w-full h-40 bg-gray-700 border border-gray-600 rounded-lg p-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Enter reviews here, one per line..."></textarea>
+        </div>
+
+        <!-- Product Link Section -->
+        <div class="bg-gray-800 p-8 rounded-xl shadow-2xl mb-8">
+            <h2 class="text-2xl font-semibold text-cyan-300 mb-4">3. Provide Product Link (Optional)</h2>
+            <input type="text" id="product-link-input" class="w-full bg-gray-700 border border-gray-600 rounded-lg p-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="https://example.com/product-page">
+            <p class="mt-2 text-sm text-gray-400">Providing a link to the product page can help improve the accuracy of the analysis.</p>
+        </div>
+
+        <!-- Analysis Trigger -->
+        <div class="text-center">
+            <button id="analyze-btn" class="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition duration-300 ease-in-out transform hover:scale-105">
+                Analyze Now
+            </button>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results-section" class="bg-gray-800 p-8 rounded-xl shadow-2xl mt-8 hidden">
+            <div id="falsity-score-container" class="text-center mb-6">
+                <!-- Falsity score will be dynamically inserted here -->
+            </div>
+            <h2 class="text-2xl font-semibold text-cyan-300 mb-4">Analysis Results</h2>
+            <div id="results-content" class="text-gray-300">
+                <!-- Results will be dynamically inserted here -->
+            </div>
+        </div>
     </div>
+    <script>
+        const dropzoneFileInput = document.getElementById('dropzone-file');
+        const analyzeBtn = document.getElementById('analyze-btn');
+        const resultsSection = document.getElementById('results-section');
+        const resultsContent = document.getElementById('results-content');
+        const reviewsInput = document.getElementById('reviews-input');
+        const productLinkInput = document.getElementById('product-link-input');
+
+        let imageData = null;
+
+        dropzoneFileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const imageUrl = e.target.result;
+                    imageData = imageUrl;
+                    const dropzoneLabel = document.querySelector('label[for="dropzone-file"]');
+                    dropzoneLabel.innerHTML = `<img src="${imageUrl}" class="max-h-full max-w-full rounded-lg">`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        analyzeBtn.addEventListener('click', async () => {
+            resultsSection.classList.remove('hidden');
+            resultsContent.innerHTML = '<p class="text-lg">Analyzing... please wait.</p>';
+            document.getElementById('falsity-score-container').innerHTML = '';
+
+
+            const reviews = reviewsInput.value;
+            const productLink = productLinkInput.value;
+
+            if (!reviews && !imageData) {
+                resultsContent.innerHTML = '<p class="text-lg text-red-500">Please provide reviews or an image to analyze.</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ reviews, productLink, imageData }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    const scoreContainer = document.getElementById('falsity-score-container');
+                    if (data.score && data.score !== 'N/A') {
+                        scoreContainer.innerHTML = `<p class="text-gray-400 text-lg mb-2">Overall Falsity Score</p><p class="gaming-font text-7xl text-red-500">${data.score}</p>`;
+                    } else {
+                        scoreContainer.innerHTML = '';
+                    }
+                    resultsContent.innerHTML = data.text.replace(/\n/g, '<br>');
+                } else {
+                    resultsContent.innerHTML = `<p class="text-lg text-red-500">${data.error}</p>`;
+                }
+            } catch (error) {
+                console.error("Error during API call:", error);
+                resultsContent.innerHTML = '<p class="text-lg text-red-500">An error occurred during analysis. Please check the console for details.</p>';
+            }
+        });
+    </script>
 </body>
 </html>
